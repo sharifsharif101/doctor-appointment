@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use  App\Http\Controllers\DoctorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +25,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 }  );
 
-Route::get('/test', function () {
-    return view('test');
-}  );
+Route::resource('doctor', DoctorController::class);
+
+// Route::get('/test', function () {
+//     return view('test');
+// }  );
