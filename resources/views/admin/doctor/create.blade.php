@@ -30,24 +30,23 @@
 
         <div class="col-lg-10">
             @if (Session::has('message'))
-            <div class="alert alert-success">
-                {{Session::get('message')}}
-            </div>
-                
+                <div class="alert alert-success">
+                    {{ Session::get('message') }}
+                </div>
             @endif
             <div class="card">
                 <div class="card-header">
                     <h3>Add Doctor</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('doctor.store')}}" 
-                    method="POST" enctype="multipart/form-data"
-                    class="forms-sample">
+                    <form action="{{ route('doctor.store') }}" method="POST" enctype="multipart/form-data"
+                        class="forms-sample">
                         @csrf
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="">Full name</label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="doctor name">
+<input type="text" value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror"
+     name="name" placeholder="doctor name"> 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -56,7 +55,8 @@
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Email</label>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email">
+                                <input value="{{old('email')}}" type="email" class="form-control @error('email') is-invalid @enderror"
+                                    name="email" placeholder="Email">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -67,7 +67,8 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="">Password</label>
-                                <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Doctor Password">
+                                <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                    name="password" placeholder="Doctor Password">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -91,7 +92,8 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="">Education</label>
-                                <input type="text" class="form-control @error('education') is-invalid @enderror" name="education" placeholder="Doctor Highest Degree">
+                                <input  value="{{old('education')}}" type="text" class="form-control @error('education') is-invalid @enderror"
+                                    name="education" placeholder="Doctor Highest Degree">
                                 @error('education')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -100,7 +102,8 @@
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Address</label>
-                                <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" placeholder="Doctor Address">
+                                <input type="text" class="form-control @error('address') is-invalid @enderror"
+                                value="{{old('address')}}" name="address" placeholder="Doctor Address">
                                 @error('address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -124,7 +127,9 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Phone number</label>
-                                    <input type="text" name="phone_number" class="form-control @error('phone_number') is-invalid @enderror" value="{{ old('phone_number') }}">
+                                    <input  value="{{old('phone_number')}}" type="text" name="phone_number"
+                                        class="form-control @error('phone_number') is-invalid @enderror"
+                                        value="{{ old('phone_number') }}">
                                     @error('phone_number')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -137,7 +142,9 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Image</label>
-                                    <input type="file" class="form-control file-upload-info @error('image') is-invalid @enderror" placeholder="Upload Image" name="image">
+                                    <input type="file"
+                                        class="form-control file-upload-info @error('image') is-invalid @enderror"
+                                        placeholder="Upload Image" name="image">
                                     @error('image')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -162,7 +169,8 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleTextarea1">About</label>
-                            <textarea class="form-control @error('description') is-invalid @enderror" id="exampleTextarea1" rows="4" name="description">{{ old('description') }}</textarea>
+                            <textarea class="form-control @error('description') is-invalid @enderror" id="exampleTextarea1" rows="4"
+                                name="description">{{ old('description') }}</textarea>
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
