@@ -53,12 +53,31 @@ class DoctorController extends Controller
 
     public function edit(string $id)
     {
-        //
+        $user = User::find($id);
+        // dd($user);
+        return view('admin.doctor.edit',compact('user'));
     }
 
     public function update(Request $request, string $id)
     {
-        //
+        $this->validateUpdate($request,$id);
+        $date = $request->all();
+        $user = User::find($id);
+        $imageName = $user->image;
+        $userPassword = $user->password;
+     
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $name = $image->hashName();
+            $destination = public_path('/images');
+            $image->move($destination, $name);
+            $data['image'] = $name;
+        }
+
+
+
+
+
     }
 
 
@@ -82,4 +101,23 @@ class DoctorController extends Controller
             'role_id' => 'required',
         ]);
     }
+
+
+    public function validateUpdate($request ,$id){
+        return $this->validate($request, [
+             'name' => 'required|string|max:255',
+             'email' => 'required|email|unique:users,email,'.$id,
+             'gender' => 'required|string|in:male,female',
+             'education' => 'required|string|max:255',
+             'address' => 'required',
+             // 'department' => 'required|string|max:255',
+             'phone_number' => 'required|numeric',
+             'image' => 'mimes:jpeg,jpg,png',  
+             'description' => 'required|string',
+             'role_id' => 'required',
+         ]);
+     }
+
+
+
 }
