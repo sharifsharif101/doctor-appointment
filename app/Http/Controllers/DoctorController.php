@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class DoctorController extends Controller
 {
 
     public function index()
     {
-        $users = User::get();
+        dd(Auth::user()->role->name);
+        $users = User::where('role_id', '!=', 3)->get();
         return view('admin.doctor.index',compact('users'));
     }
 
@@ -24,31 +25,18 @@ class DoctorController extends Controller
     {
         // Validate the request
         $this->validateStore($request);    
-        // Debug request data
-        // Get all request data
         $data = $request->all();
-        // Check if image is uploaded
-        $image = $request->file('image');
-        if ($image) {
-            // Generate a hashed name for the image
-            $name = $image->hashName();
-            // Define the destination path
-            $destination = public_path('/images');
-            // Move the image to the destination
-            $image->move($destination, $name);
-            // Add the image name to the data array
-            $data['image'] = $name;
-        }
-        // Encrypt the password before storing
+        $name = (new User)->userAvatar($request);
+        $data['image'] = $name; 
         $data['password'] = bcrypt($request->password);
-        // Create the user with the provided data
         User::create($data);
         return redirect()->back()->with('message', 'Doctor added successfully ');
     }
 
     public function show(string $id)
     {
-        return "sdbsssssssssvsdv";
+        $user = User::find($id);
+        return view('admin.doctor.delete',compact('user'));
     }
 
     public function edit(string $id)
@@ -63,27 +51,34 @@ class DoctorController extends Controller
         $this->validateUpdate($request,$id);
         $date = $request->all();
         $user = User::find($id);
-        $imageName = $user->image;
-        $userPassword = $user->password;
-     
+        $imageName = $user->image; // ole one
+        $userPassword = $user->password; // old one
         if($request->hasFile('image')){
-            $image = $request->file('image');
-            $name = $image->hashName();
-            $destination = public_path('/images');
-            $image->move($destination, $name);
-            $data['image'] = $name;
+            $imageName  = (new User)->userAvatar($request);
+            unlink(public_path('images/' . $user->image));
         }
-
-
-
-
-
+        $date['image'] = $imageName;
+        if($request->password){
+            $date['password'] = bcrypt($request->password);
+        }else{
+            $date['password'] = $userPassword;
+        }
+        $user->update($date);
+        return redirect()->route('doctor.index')->with('message', 'Doctor updated successfully');
     }
 
 
     public function destroy(string $id)
     {
-        //
+        if(auth()->user()->id == $id){
+            abort(401);
+        }
+        $user = User::find($id);
+        $userDelete = $user->delete();
+        if( $userDelete){
+            unlink(public_path('images/' . $user->image));
+        }
+        return redirect()->route('doctor.index')->with('message', 'Doctor Deleted successfully');
     }
 
     public function validateStore($request){

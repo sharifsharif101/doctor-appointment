@@ -25,7 +25,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 }  );
 
-Route::resource('doctor', DoctorController::class);
+Route::group(['middleware' => ['auth', 'admin']], function () {
+    Route::resource('doctor', DoctorController::class);
+});
 
 // Route::get('/test', function () {
 //     return view('test');

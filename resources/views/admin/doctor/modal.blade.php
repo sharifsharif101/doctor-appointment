@@ -16,9 +16,9 @@
             <p>Name: {{$user->name}}</p>
             <p>Email: {{$user->email}}</p>
             <p>Address: {{$user->address}}</p>
-            <p>Phone_number: {{$user->Phone_number}}</p>
+            <p>Phone_number: {{$user->phone_number}}</p>
             <p>Department: {{$user->department}}</p>
-            <p>Education: {{$user->eduction}}</p>
+            <p>Education: {{$user->education}}</p>
             <p>Description: {{$user->description}}</p>
         </div>
         <div class="modal-footer">

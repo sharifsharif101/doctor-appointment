@@ -39,9 +39,9 @@
                     <h3>Update Doctor</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('doctor.update',[$user->id]) }}" method='PUT' enctype="multipart/form-data"
-                        class="forms-sample">
+                    <form action="{{ route('doctor.update', [$user->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT') 
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="">Full name</label>
@@ -158,7 +158,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Phone number</label>
-                                    <input  value="{{old('phone_number')}}" type="text" name="phone_number"
+                                    <input type="text" name="phone_number"    
                                         class="form-control @error('phone_number') is-invalid @enderror"
                                         value="{{$user->phone_number }}">
                                     @error('phone_number')

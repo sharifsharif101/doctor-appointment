@@ -154,10 +154,10 @@
                             </div>
                             <div class="col-md-6">
                                 <label>Role</label>
-                                <select name="role_id" class="form-control @error('role_id') is-invalid @enderror">
+                                <select name="role_id" value="{{old('education')}}" class="form-control @error('role_id') is-invalid @enderror">
                                     <option value="">Please select role</option>
                                     @foreach (App\Models\Role::where('name', '!=', 'patient')->get() as $role)
-                                        <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                        <option value="{{ $role->id }}" {{ old('role_id') == $role->id ? 'selected' : '' }}>{{ $role->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('role_id')

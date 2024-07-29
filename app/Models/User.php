@@ -56,5 +56,19 @@ class User extends Authenticatable
         return $this->hasOne('App\Models\role', 'id', 'role_id');
     }
 
+    public function userAvatar( $request){
+        $image = $request->file('image');
+        if ($image) {
+            // Generate a hashed name for the image
+            $name = $image->hashName();
+            // Define the destination path
+            $destination = public_path('/images');
+            // Move the image to the destination
+            $image->move($destination, $name);
+            // Add the image name to the data array
+            return $name;
+        }
+    }
+
 
 }
