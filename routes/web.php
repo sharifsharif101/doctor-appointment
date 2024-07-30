@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\DoctorController;
+use  App\Http\Controllers\AppointmentController;
+use App\Models\Appointment;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +33,8 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::resource('doctor', DoctorController::class);
 });
 
+Route::resource('appointment', AppointmentController::class);
+Route::post('/appointment/check', [AppointmentController::class,'check'])->name('appointment.check');
 // Route::get('/test', function () {
 //     return view('test');
 // }  );

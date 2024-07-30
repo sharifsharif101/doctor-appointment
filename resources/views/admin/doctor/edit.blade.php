@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+{{-- @extends('admin.layouts.master')
 
 @section('content')
     <div class="page-header">
@@ -41,12 +41,13 @@
                 <div class="card-body">
                     <form action="{{ route('doctor.update', [$user->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT') 
+                        @method('PUT')
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="">Full name</label>
-<input type="text" value="{{$user->name}}" class="form-control @error('name') is-invalid @enderror"
-     name="name" placeholder="doctor name"> 
+                                <input type="text" value="{{ $user->name }}"
+                                    class="form-control @error('name') is-invalid @enderror" name="name"
+                                    placeholder="doctor name">
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -55,8 +56,9 @@
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Email</label>
-                                <input value="{{$user->email}}" value="{{old('email')}}" type="email" class="form-control @error('email') is-invalid @enderror"
-                                    name="email" placeholder="Email">
+                                <input value="{{ $user->email }}" value="{{ old('email') }}" type="email"
+                                    class="form-control @error('email') is-invalid @enderror" name="email"
+                                    placeholder="Email">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -67,8 +69,9 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="">Password</label>
-                                <input   value="{{$user->email}}" type="password" class="form-control @error('password') is-invalid @enderror"
-                                    name="password" placeholder="Doctor Password">
+                                <input value="{{ $user->email }}" type="password"
+                                    class="form-control @error('password') is-invalid @enderror" name="password"
+                                    placeholder="Doctor Password">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -78,12 +81,10 @@
                             <div class="col-lg-6">
                                 <label for="">Gender</label>
                                 <select name="gender" class="form-control @error('gender') is-invalid @enderror">
-                            @foreach (['male','female'] as $gender)
-                                <option value="{{$gender}}"
-                                @if($user->gender==$gender) 
-                                selected
-                                @endif>{{$gender}}</option>
-                            @endforeach
+                                    @foreach (['male', 'female'] as $gender)
+                                        <option value="{{ $gender }}"
+                                            @if ($user->gender == $gender) selected @endif>{{ $gender }}</option>
+                                    @endforeach
                                 </select>
                                 @error('gender')
                                     <span class="invalid-feedback" role="alert">
@@ -95,8 +96,9 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="">Education</label>
-                                <input  value="{{$user->education}}" type="text" class="form-control @error('education') is-invalid @enderror"
-                                    name="education" placeholder="Doctor Highest Degree">
+                                <input value="{{ $user->education }}" type="text"
+                                    class="form-control @error('education') is-invalid @enderror" name="education"
+                                    placeholder="Doctor Highest Degree">
                                 @error('education')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -106,7 +108,7 @@
                             <div class="col-lg-6">
                                 <label for="">Address</label>
                                 <input type="text" class="form-control @error('address') is-invalid @enderror"
-                                value="{{$user->address}}" name="address" placeholder="Doctor Address">
+                                    value="{{ $user->address }}" name="address" placeholder="Doctor Address">
                                 @error('address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -135,8 +137,8 @@
             
             
             
-                                        @foreach(App\Department::all() as $department)
-                                        <option value="{{$department->department}}" @if($user->department==$department->department)selected @endif>{{$department->department}}</option> 
+                                        @foreach (App\Department::all() as $department)
+                                        <option value="{{$department->department}}" @if ($user->department == $department->department)selected @endif>{{$department->department}}</option> 
                                         @endforeach
             
             
@@ -153,14 +155,14 @@
                                             @enderror
                                     
                                 </div> --}}
-                                
+
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Phone number</label>
-                                    <input type="text" name="phone_number"    
+                                    <input type="text" name="phone_number"
                                         class="form-control @error('phone_number') is-invalid @enderror"
-                                        value="{{$user->phone_number }}">
+                                        value="{{ $user->phone_number }}">
                                     @error('phone_number')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -188,8 +190,7 @@
                                 <select name="role_id" class="form-control @error('role_id') is-invalid @enderror">
                                     <option value="">Please select role</option>
                                     @foreach (App\Models\Role::where('name', '!=', 'patient')->get() as $role)
-                                        <option value="{{ $role->id }}"
-                                  @if ($user->role_id== $role->id) selected @endif  >
+                                        <option value="{{ $role->id }}"@if ($user->role_id == $role->id) selected @endif>
                                             {{ $role->name }}
                                         </option>
                                     @endforeach
@@ -205,7 +206,7 @@
                             <label for="exampleTextarea1">About</label>
                             <textarea class="form-control @error('description') is-invalid @enderror" id="exampleTextarea1" rows="4"
                                 name="description">
-                                {{$user->description}}
+                                {{ $user->description }}
                             </textarea>
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
@@ -222,4 +223,4 @@
         </div>
 
     </div>
-@endsection
+@endsection  

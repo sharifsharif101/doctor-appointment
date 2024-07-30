@@ -32,10 +32,9 @@
 <div class="row">
     <div class="col-md-12">
         @if (Session::has('message'))
-            <div class="alert bg-success  alert-success text-white"
-            role="alert">
-                {{ Session::get('message') }}
-            </div>
+        <div class="alert bg-success  alert-success text-white" role="alert">
+            {{ Session::get('message') }}
+        </div>
         @endif
         <div class="card">
             <div class="card-header">
@@ -68,14 +67,14 @@
                             <td>
                                 <div class="table-actions">
                                     <a href="#" data-toggle="modal" data-target="#exampleModal{{$user->id}}">
-                                    <i class="ik ik-eye"></i>
+                                        <i class="ik ik-eye"></i>
                                     </a>
                                     <a href="{{route('doctor.edit',[$user->id])}}"><i class="ik ik-edit-2"></i></a>
-                                   
+
                                     <a href="{{route('doctor.show',[$user->id])}}">
                                         <i class="ik ik-trash-2"></i>
                                     </a>
-                                    
+
                                 </div>
                             </td>
                             <td>xssssss</td>
@@ -83,9 +82,9 @@
                         @include('admin.doctor.modal')
                         @endforeach
                         @else
-                            <td> No user to dispaly </td>
+                        <td> No user to dispaly </td>
                         @endif
-                        
+
                     </tbody>
                 </table>
             </div>
