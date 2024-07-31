@@ -14,7 +14,20 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
+    @vite(['resources/sass/app.scss'])
+
+    <script src="{{ mix('js/app.js') }}" defer></script>
+
+    {{-- Styles --}}
+    <link rel="stylesheet" href="{{asset('template/dist/css/theme.min.css')}}">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    
+   <!--for datepicker-->
+   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"defer></script>
+  
+<!--for datepicker-->
 </head>
 <body>
     <div id="app">
@@ -76,5 +89,23 @@
             @yield('content')
         </main>
     </div>
+<script>
+    var dateToday = new Date();
+    $( function() {
+    $("#datepicker").datepicker({
+        dateFormat:"yy-mm-dd",
+        showButtonPanel:true,
+        numberOfMonths:2,
+        minDate:dateToday,
+    });
+    });
+
+</script>
+<style type="text/css">
+    .ui-corner-all{
+        background: red;
+        color: #fff;
+    }
+</style>
 </body>
 </html>
