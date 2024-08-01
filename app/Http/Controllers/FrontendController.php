@@ -31,7 +31,7 @@ class FrontendController extends Controller
 
    public function findDoctorBasedOnDate($date){
       $doctors = Appointment::where('date', $date)->get();
-      return $doctors;
+      return $doctors; 
    }
 
 
