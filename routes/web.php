@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\DoctorController;
 use  App\Http\Controllers\AppointmentController;
 use  App\Http\Controllers\FrontendController;
+use  App\Http\Controllers\DashboardController;
 use App\Models\Appointment;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,16 +21,22 @@ use Illuminate\Support\Facades\Auth;
 
 // Route::get('/', function () {
 //     return view('welcome');
- 
+Route::get('/dashboard',[ DashboardController::class ,'index']);
 Route::get('/',[ FrontendController::class ,'index']);
+
+
+Route::get('/new-appointment/{doctorId}/{date}',[ FrontendController::class ,'show'])->name('create.appointment');
+Route::get('/book/appointment',[ FrontendController::class ,'store'])->name('booking.appointment')->middleware('auth');
+
+
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-}  );
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// }  );
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::resource('doctor', DoctorController::class);

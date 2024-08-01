@@ -8,17 +8,18 @@
                 <img src="/banner/online-medicine-concept_160901-152.jpg" class="img-fluid" style="border:1px solid #ccc" alt="">
             </div>
             <div class="col-md-6">
-                <h2>Create Account & book Your Appointment</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium nihil pariatur quo necessitatibus quibusdam distinctio, excepturi dolores doloribus quae, sit reprehenderit eveniet ducimus quas! Voluptate aspernatur consequatur quisquam quos consectetur?</p>
+                <h2> Create Account & book Your Appointment</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium nihil pariatur quo necessitatibus quibusdam distinctio, excepturi dolores doloribus quae, sit reprehenderit eveniet ducimus quas! Voluptate aspernatur consequatur quisquam quos consectetur </p>
                 <div class="mt-5">
-                    <button class="btn btn-success">Register as Patient</button>
-                    <button class="btn btn-secondary">  Login</button>
+                    <a  href="{{url('/register')}}" class="btn btn-success">Register as Patient</a>
+                    <a href="{{url('/login')}}" class="btn btn-secondary">Login</a>
                 </div>
             </div>
        </div>
     </div>
     <hr>
     {{-- serch doctor --}}
+    <form action="{{url('/')}}" method="GET">
     <div class="card">
         <div class="card-body">
             <div class="card-header">Find Doctor</div>
@@ -34,6 +35,7 @@
             </div>
         </div>
     </div>
+</form>
     {{-- dispaly doctor --}}
     <div class="card">
         <div class="card-body">
@@ -50,23 +52,27 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @forelse ($doctors as $doctor)
                         <tr>
                             <th scope="row">1</th>
                             <td>
-                                <img src="/doctor/doctor.png" width="100px" style="border-radius:50%" alt="">
+                                <img src="{{asset('images')}}/{{$doctor->doctor->image}}" width="80px" style="border-radius:50%" alt="">
                             </td>
                             <td> 
-                                Name of doctor
+                                 {{$doctor->doctor->name}}
                             </td>
                             <td>
-                                Cardoligest
+                                {{$doctor->doctor->department}}
                             </td>
                             <td> 
-                                <button class="btn btn-success">
+                                <a href="{{ route('create.appointment', [$doctor->user_id, $doctor->date]) }}" class="btn btn-success">
                                     Book Appointment
-                                </button>
+                                </a>
                             </td>
                         </tr>
+                        @empty
+                        <td> no Doctors availble today</td>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
