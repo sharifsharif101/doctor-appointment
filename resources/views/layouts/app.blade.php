@@ -50,7 +50,11 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
-                {{-- @if(auth()->check() && auth()->user()->role->name === 'patient')    --}}
+               @if(auth()->check() && auth()->user()->role->name === 'patient')  
+               <li class="nav-item">
+                <a class="nav-link" href="{{ route('my.booking') }}">My Booking</a>
+            </li>
+               @endif
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -69,7 +73,14 @@
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {{ Auth::user()->name }}
                             </a>
+                          
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @if(auth()->check() && auth()->user()->role->name === 'patient')  
+
+                                <a class="dropdown-item" href="{{url('user-profile')}}">Profile</a>
+                                @else
+                                <a class="dropdown-item"  href="{{url('dashboard')}}">Dashboard</a>
+                                @endif
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();  document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}

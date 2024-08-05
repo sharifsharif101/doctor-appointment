@@ -129,6 +129,8 @@ window.jQuery || document.write('<script src="src/js/vendor/jquery-3.3.1.min.js"
 <script src="{{ asset('template/js/widgets.js') }}"></script>
 <script src="{{ asset('template/js/charts.js') }}"></script>
 <script src="{{ asset('template/dist/js/theme.min.js') }}"></script>
+ 
+
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script type="text/javascript">
     $(document).ready(function(){

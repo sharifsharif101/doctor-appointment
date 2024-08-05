@@ -24,3 +24,7 @@ yarn-error.log
 /.idea
 /.vscode
 /.doctor-appointment/public/images/
+public/profile/1722855608.jpg
+public/profile/1722854242.JPG
+.gitignore
+public/doctors/doctor.png

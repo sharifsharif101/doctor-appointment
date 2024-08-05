@@ -1,7 +1,7 @@
-{{-- @extends('admin.layouts.master')
+ @extends('admin.layouts.master')
 
 @section('content')
-    <div class="page-header">
+    {{-- <div class="page-header">
         <div class="row align-items-end">
             <div class="col-lg-8">
                 <div class="page-header-title">
@@ -24,7 +24,7 @@
                 </nav>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="row justify-content-center">
 

@@ -82,7 +82,7 @@
         <div class="col-md-3">
             <div class="card">
                 <div class="card-header">Update Image</div>
-                <form action="#" method="post" enctype="multipart/form-data">@csrf
+                <form action="{{route('profile.pic')}}" method="post" enctype="multipart/form-data">@csrf
                 <div class="card-body">
                     @if(!auth()->user()->image)
                     <img src="/images/3Dz1og01c2vXjbjmfTskpLqdVGEB2Qmpg1DLROiR.png" width="120">

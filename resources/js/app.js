@@ -17,8 +17,7 @@ const app = createApp({});
 
 import ExampleComponent from './components/ExampleComponent.vue';
 app.component('example-component', ExampleComponent);
-import FindDoctor from './components/FindDoctor.vue';
-app.component('find-doctor', FindDoctor);
+ 
 
 /**
  * The following block of code may be used to automatically register your
