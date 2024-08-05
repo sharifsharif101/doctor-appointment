@@ -5,6 +5,7 @@ use  App\Http\Controllers\DoctorController;
 use  App\Http\Controllers\AppointmentController;
 use  App\Http\Controllers\FrontendController;
 use  App\Http\Controllers\DashboardController;
+use  App\Http\Controllers\ProfileController;
 use App\Models\Appointment;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,8 +27,11 @@ Route::get('/',[ FrontendController::class ,'index']);
 
 
 Route::get('/new-appointment/{doctorId}/{date}',[ FrontendController::class ,'show'])->name('create.appointment');
-Route::get('/book/appointment',[ FrontendController::class ,'store'])->name('booking.appointment')->middleware('auth');
+Route::post('/book/appointment',[ FrontendController::class ,'store'])->name('booking.appointment')->middleware('auth');
 
+Route::get('/profile-41',[ ProfileController::class ,'index']);
+Route::post('/profile-41', [ProfileController::class, 'store'])->name('profile.store');
+Route::post('/profile-41-pic', [ProfileController::class, 'profilePic'])->name('profile.pic');
 
 
 Auth::routes();

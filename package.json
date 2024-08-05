@@ -3,7 +3,8 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "serve": "vite preview"
     },
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
@@ -14,5 +15,9 @@
         "sass": "^1.56.1",
         "vite": "^5.0.0",
         "vue": "^3.2.37"
+    },
+    "dependencies": {
+        "moment": "^2.30.1",
+        "vue3-date-time-picker": "^2.8.3"
     }
 }
