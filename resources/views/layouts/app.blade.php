@@ -55,6 +55,11 @@
                 <a class="nav-link" href="{{ route('my.booking') }}">My Booking</a>
             </li>
                @endif
+               @if(auth()->check() && auth()->user()->role->name === 'patient')  
+               <li class="nav-item">
+                <a class="nav-link" href="{{ route('my.prescription') }}">My Prescription</a>
+            </li>
+               @endif
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))

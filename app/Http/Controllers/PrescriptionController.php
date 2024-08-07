@@ -18,4 +18,16 @@ class PrescriptionController extends Controller
         Prescription::create($date);
         return redirect()->back()->with('message', 'prescription Created ');
     }
+    
+    public function show($userId,$date){
+        $prescription = Prescription::where('user_id', $userId)->where('date', $date)->first();
+        return view ('prescription.show',compact('prescription'));
+    }
+    public function patientsFormPrescription(){
+        $patients = Prescription::get();
+        return view('prescription.all', compact('patients'));
+ 
+    }
+
+
 }

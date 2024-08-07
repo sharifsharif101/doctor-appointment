@@ -12,10 +12,7 @@
                 <div class="card-header"> 
                      Appointment ({{$bookings->count()}})
                  </div>
-                 
-
-                
-
+            
                 <div class="card-body">
                     <table class="table table-striped">
                       <thead>
@@ -53,9 +50,14 @@
                               @endif
                             </td>
                             <td>
+              @if(!App\models\prescription::where('date',date('Y-m-d'))->where('doctor_id',auth()->user()->id)->where('user_id',$booking->user->id)->exists())
                               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$booking->user_id}}">
                                 Write prescription
                               </button>
+                              @include('prescription.form')
+                              @else
+                             <a href="{{route('prescription.show',[$booking->user_id,$booking->date])}}" class="btn btn-secondary"> View Prescription</a>
+                              @endif
                             </td>
                           
                         </tr>
