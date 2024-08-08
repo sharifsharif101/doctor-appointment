@@ -83,7 +83,7 @@
                         <table class="table table-striped">
 
                             <tbody>
-   <input type="text" name="appointmentId" value="{{ $appointmentId }}">
+   <input type="hidden" name="appointmentId" value="{{ $appointmentId }}">
                                 <tr>
                                     <th scope="row">1</th>
                                     <td><input type="checkbox" name="time[]" value="6am"

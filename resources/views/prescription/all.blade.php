@@ -58,7 +58,7 @@
                           </td>
                         </tr>
                         @empty
-                        <td>There is no any appointments !</td>
+                        <td>There is no data !</td>
                         @endforelse
                        
                       </tbody>

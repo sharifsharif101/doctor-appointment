@@ -28,6 +28,7 @@ class PrescriptionController extends Controller
         return view('prescription.all', compact('patients'));
  
     }
+ 
 
 
 }

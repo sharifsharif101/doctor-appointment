@@ -13,10 +13,19 @@ class AppointmentMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $mailDate;
-    public function __construct($mailDate)
+    /**
+     * Create a new message instance.
+     */
+    public $subject;
+    public $body;
+    public $mailData;
+     public function __construct($subject,$body,$mailData)
     {
-        $this->mailDate = $mailDate;
+       $this->subject=$subject;
+       $this->body=$body;
+       $this->mailData = $mailData;
+
+ 
     }
 
     /**
@@ -25,32 +34,34 @@ class AppointmentMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Appointment Mail',
+            subject: $this->subject,
         );
     }
 
     /**
      * Get the message content definition.
      */
+    // public function content(): Content
+    // {
+    //     return new Content(
+    //         view: 'mail',
+    //     );
+    // }
+
     public function content(): Content
     {
         return new Content(
-            view: 'email.appointment'
+            view: 'mail',
+            with: array_merge([
+                'subject' => $this->subject,
+                'body' => $this->body,
+            ], $this->mailData),
         );
     }
-    public function build()
-    {
-        return $this->view('email.appointment')
-                    ->with([
-                        'mailDate' => $this->mailDate,
-                    ]);
-    }
+
  
     public function attachments(): array
     {
         return [];
     }
-
- 
- 
 }

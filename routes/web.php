@@ -38,7 +38,7 @@ Route::group(['middleware' => ['auth', 'patient']], function () {
         Route::post('/book/appointment',[ FrontendController::class ,'store'])->name('booking.appointment') ;
         Route::get('/my-booking',[ FrontendController::class ,'myBooking'])->name('my.booking') ;
         Route::get('/user-profile',[ ProfileController::class ,'index']);
-        Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
+        Route::post('/user-profile', [ProfileController::class, 'store'])->name('profile.store');
         Route::post('/profile-pic', [ProfileController::class, 'profilePic'])->name('profile.pic');
         Route::get('/my-prescription', [FrontendController::class, 'myPrescription'])->name('my.prescription');
 
@@ -66,7 +66,7 @@ Route::group(['middleware' => ['auth', 'doctor']], function () {
     Route::get('/patient-today', [PrescriptionController::class,'index'])->name('patient-today');
     Route::post('/prescription', [PrescriptionController::class, 'store'])->name('prescription');
     Route::get('/prescription/{userId}/{date}', [PrescriptionController::class, 'show'])->name('prescription.show');
-    Route::get('/prescribed-patients', [PrescriptionController::class, 'patientsFromPrescription'])->name('prescribed.patients');
+    Route::get('/prescribed-patients', [PrescriptionController::class, 'patientsFormPrescription'])->name('prescribed.patients');
 
 
     

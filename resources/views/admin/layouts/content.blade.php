@@ -107,7 +107,7 @@
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="state">
                                                 <h6>Department</h6>
-                                                {{-- <h2>{{App\Models\Department::count()}}</h2> --}}
+                                                <h2>{{App\Models\Department::count()}}</h2>
                                             </div>
                                             <div class="icon">
                                                 <i class="ik ik-home"></i>

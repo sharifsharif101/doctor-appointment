@@ -54,39 +54,16 @@ $myappointments = Appointment::latest()->where('user_id', auth()->user()->id)->g
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
-
+   
     public function check(Request $request){
         $date = $request->date;
         $appointment = Appointment::where('date', $date)->where('user_id', auth()->user()->id)->first();
-        if(!$appointment){
-            return redirect()->back()->with('errmessage', 'Appointment  time not available for this date');
-        }
+            if(!$appointment){
+                return redirect()->to('/appointment')->with('errmessage','no Appointment time not available for this date');
+            }
+
         $appointmentId = $appointment->id;
         $times = Time::where('appointment_id', $appointmentId)->get();
-   
         return view('admin.appointment.index', compact('times','appointmentId','date'));
     }
 

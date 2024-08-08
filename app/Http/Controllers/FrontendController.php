@@ -10,6 +10,7 @@ use App\Models\Booking;
 use App\Models\Prescription;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+
 use App\Mail\AppointmentMail;
 
 class FrontendController extends Controller
@@ -57,20 +58,24 @@ class FrontendController extends Controller
          ->where('time', $request->time)
          ->update(['status' => 1]);
          //send Email 
-         $doctorName= User::where('id',$request->doctorId)->first();
-      $mailDate = [
+      $doctorName= User::where('id',$request->doctorId)->first();
+      $mailData = [
          'name' => auth()->user()->name,
          'time' => $request->time,
          'date' => $request->date,
-         'doctorName' => $request->doctorName
+         'doctorName' =>$doctorName->name
       ];
+      
          try{
-            Mail::to(auth()->user()->email)->send(new AppointmentMail($mailDate));
+         $subject = 'test Subject';
+         $body = 'aaaaaa';
+
+            // Mail::to(auth()->user()->email)->send(new AppointmentMail($subject, $body));
+            Mail::to(auth()->user()->email)->send(new AppointmentMail($subject, $body, $mailData));
 
          }catch(\Exception $e){
 
          }
-
       return redirect()->back()->with('message', 'Your appointment was booked');
    }
 
