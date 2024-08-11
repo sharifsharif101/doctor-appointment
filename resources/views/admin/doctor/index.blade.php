@@ -41,7 +41,7 @@
                 <h3>Data Table</h3>
             </div>
             <div class="card-body">
-                <table id="data_table" class="table">
+                <table id="" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -50,43 +50,48 @@
                             <th>Address</th>
                             <th>Phone number</th>
                             <th>Department</th>
-                            <th class="nosort">&nbsp;</th>
-                            <th class="nosort">&nbsp;</th>
+                            <th class="nosort">Actions</th>
+                            <th class="nosort" style="width: 100px;">Events</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if (count($users)>0)
-                        @foreach ($users as $user)
-                        <tr>
-                            <td>{{$user->name}}</td>
-                            <td><img src="{{asset('images')}}/{{$user->image}}" class="table-user-thumb" alt=""></td>
-                            <td>{{$user->email}}</td>
-                            <td>{{$user->address}}</td>
-                            <td>{{$user->phone_number}}</td>
-                            <td>{{$user->department}}</td>
-                            <td>
-                                <div class="table-actions">
-                                    <a href="#" data-toggle="modal" data-target="#exampleModal{{$user->id}}">
-                                        <i class="ik ik-eye"></i>
-                                    </a>
-                                    <a href="{{route('doctor.edit',[$user->id])}}"><i class="ik ik-edit-2"></i></a>
-
-                                    <a href="{{route('doctor.show',[$user->id])}}">
-                                        <i class="ik ik-trash-2"></i>
-                                    </a>
-
-                                </div>
-                            </td>
-                            <td>xssssss</td>
-                        </tr>
-                        @include('admin.doctor.modal')
-                        @endforeach
+                        @if (count($users) > 0)
+                            @foreach ($users as $user)
+                                <tr>
+                                    <td>{{ $user->name }}</td>
+                                    <td><img src="{{ asset('images/' . $user->image) }}" class="table-user-thumb" alt=""></td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->address }}</td>
+                                    <td>{{ $user->phone_number }}</td>
+                                    <td>{{ $user->department }}</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <a href="#" data-toggle="modal" data-target="#exampleModal{{ $user->id }}">
+                                                <i class="ik ik-eye"></i>
+                                            </a>
+                                            <a href="{{ route('doctor.edit', $user->id) }}"><i class="ik ik-edit-2"></i></a>
+                                            <a href="{{ route('doctor.show', $user->id) }}">
+                                                <i class="ik ik-trash-2"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <!-- Event content goes here -->
+                                        Event details
+                                    </td>
+                                </tr>
+                                @include('admin.doctor.modal', ['user' => $user])
+                            @endforeach
                         @else
-                        <td> No user to dispaly </td>
+                            <tr>
+                                <td colspan="8">No user to display</td>
+                            </tr>
                         @endif
-
                     </tbody>
                 </table>
+                
+               
+                
             </div>
         </div>
     </div>

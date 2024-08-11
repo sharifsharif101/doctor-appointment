@@ -43,7 +43,7 @@
 			<div class="row">
 				<div class="col-lg-6">
 					<label for="">Full name</label>
-					<input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="doctor name" value="                   {{$user->name}}">
+					<input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="doctor name" value="{{$user->name}}">
                     @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -89,7 +89,7 @@
 				<div class="row">
 					<div class="col-lg-6">
 						<label for="">Education</label>
-						<input type="text" name="education" class="form-control @error('education') is-invalid @enderror" placeholder="doctor highest degree" value="                   {{$user->education}}">
+						<input type="text" name="education" class="form-control @error('education') is-invalid @enderror" placeholder="doctor highest degree" value="{{$user->education}}">
                          @error('education')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -189,10 +189,7 @@
            
             <div class="form-group">
                 <label for="exampleTextarea1">About</label>
-                <textarea class="form-control @error('description') is-invalid @enderror" id="exampleTextarea1" rows="4" name="description">
-                {{$user->description}}
-
-                </textarea>
+                <textarea class="form-control @error('description') is-invalid @enderror" id="exampleTextarea1" rows="4" name="description">{{$user->description}}</textarea>
                     @error('description')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

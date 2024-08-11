@@ -12,9 +12,13 @@
 
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
         
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
         <link rel="stylesheet" href="{{asset('template/plugins/bootstrap/dist/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('template/custom.css')}}">
+      
+
+
         <link rel="stylesheet" href="{{asset('template/plugins/fontawesome-free/css/all.min.css')}}">
         <link rel="stylesheet" href="{{asset('template/plugins/icon-kit/dist/css/iconkit.min.css')}}">
         <link rel="stylesheet" href="{{asset('template/plugins/ionicons/dist/css/ionicons.min.css')}}">
@@ -28,6 +32,7 @@
         <link rel="stylesheet" href="{{asset('template/plugins/owl.carousel/dist/assets/owl.theme.default.min.css')}}">
         <link rel="stylesheet" href="{{asset('template/dist/css/theme.min.css')}}">
         <script src="{{asset('template/src/js/vendor/modernizr-2.8.3.min.js')}}"></script>
+ 
     </head>
 
     <body>

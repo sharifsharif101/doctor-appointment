@@ -3,19 +3,21 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-       <div class="row">
+        <div class="row">
             <div class="col-md-6">
                 <img src="/banner/online-medicine-concept_160901-152.jpg" class="img-fluid" style="border:1px solid #ccc" alt="">
             </div>
-            <div class="col-md-6">
-                <h2> Create Account & book Your Appointment</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium nihil pariatur quo necessitatibus quibusdam distinctio, excepturi dolores doloribus quae, sit reprehenderit eveniet ducimus quas! Voluptate aspernatur consequatur quisquam quos consectetur </p>
-                <div class="mt-5">
-                    <a  href="{{url('/register')}}" class="btn btn-success">Register as Patient</a>
-                    <a href="{{url('/login')}}" class="btn btn-secondary">Login</a>
+            <div class="col-md-6 d-flex align-items-center">
+                <div>
+                    <h2> Create Account & book Your Appointment</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium nihil pariatur quo necessitatibus quibusdam distinctio, excepturi dolores doloribus quae, sit reprehenderit eveniet ducimus quas! Voluptate aspernatur consequatur quisquam quos consectetur </p>
+                    <div class="mt-5">
+                        <a href="{{url('/register')}}" class="btn btn-success">Register as Patient</a>
+                        <a href="{{url('/login')}}" class="btn btn-secondary">Login</a>
+                    </div>
                 </div>
             </div>
-       </div>
+        </div>
     </div>
     <hr>
     {{-- serch doctor --}}

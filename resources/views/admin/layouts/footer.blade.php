@@ -105,7 +105,8 @@ aria-labelledby="appsModalLabel" aria-hidden="true" data-backdrop="false">
 </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+{{-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script> --}}
 <script>
 window.jQuery || document.write('<script src="src/js/vendor/jquery-3.3.1.min.js"><\/script>')
 </script>
@@ -158,6 +159,7 @@ r.parentNode.insertBefore(e, r)
 ga('create', 'UA-XXXXX-X', 'auto');
 ga('send', 'pageview');
 </script>
+ 
 </body>
 
 </html>
